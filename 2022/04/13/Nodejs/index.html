@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Node.js系统模块fs模块，操作文件  fs.readFile()    读取指定文件中的内容  fs.writeFile()   向指定文件写入内容 处理文件路径问题：__dirname    当前文件路径   path模块，处理路径  path.join()    用来将多个路径片段拼接成一个完整的路径字符串 涉及到路径拼接的操作  path.basename()   用来从路径字符串中，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs">
+<meta property="og:url" content="http://example.com/2022/04/13/Nodejs/index.html">
+<meta property="og:site_name" content="zzy&#39;s web">
+<meta property="og:description" content="Node.js系统模块fs模块，操作文件  fs.readFile()    读取指定文件中的内容  fs.writeFile()   向指定文件写入内容 处理文件路径问题：__dirname    当前文件路径   path模块，处理路径  path.join()    用来将多个路径片段拼接成一个完整的路径字符串 涉及到路径拼接的操作  path.basename()   用来从路径字符串中，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-13T03:54:03.624Z">
+<meta property="article:modified_time" content="2022-04-13T04:27:35.109Z">
+<meta property="article:author" content="zzy">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Nodejs</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/04/13/Vue/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/04/13/jQuery/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/13/Nodejs/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/13/Nodejs/&text=Nodejs"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/13/Nodejs/&is_video=false&description=Nodejs"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Nodejs&body=Check out this article: http://example.com/2022/04/13/Nodejs/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/13/Nodejs/&name=Nodejs&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/13/Nodejs/&t=Nodejs"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js"><span class="toc-number">1.</span> <span class="toc-text">Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97"><span class="toc-number">1.1.</span> <span class="toc-text">系统模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">模块作用域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm%E4%B8%8E%E5%8C%85"><span class="toc-number">1.3.</span> <span class="toc-text">npm与包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.</span> <span class="toc-text">模块加载机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#express"><span class="toc-number">2.</span> <span class="toc-text">express</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96URL%E4%B8%AD%E6%90%BA%E5%B8%A6%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">获取URL中携带的查询参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%98%E7%AE%A1%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-number">2.2.</span> <span class="toc-text">托管静态资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1"><span class="toc-number">2.3.</span> <span class="toc-text">路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1"><span class="toc-number">2.3.1.</span> <span class="toc-text">模块化路由</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">2.4.</span> <span class="toc-text">中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.5.</span> <span class="toc-text">接口</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Nodejs
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">zzy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-04-13T03:54:03.624Z" itemprop="datePublished">2022-04-13</time>
+        
+        (Updated: <time datetime="2022-04-13T04:27:35.109Z" itemprop="dateModified">2022-04-13</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h1><h2 id="系统模块"><a href="#系统模块" class="headerlink" title="系统模块"></a>系统模块</h2><p><code>fs</code>模块，操作文件</p>
+<ul>
+<li><p>fs.readFile()    读取指定文件中的内容</p>
+</li>
+<li><p>fs.writeFile()   向指定文件写入内容</p>
+<p>处理文件路径问题：__dirname    当前文件路径</p>
+</li>
+</ul>
+<p><code>path</code>模块，处理路径</p>
+<ul>
+<li><p>path.join()    用来将多个路径片段拼接成一个完整的路径字符串</p>
+<p>涉及到路径拼接的操作</p>
+</li>
+<li><p>path.basename()   用来从路径字符串中，将文件名解析出来</p>
+</li>
+<li><p>path.extname()      获取路径中的拓展名部分</p>
+</li>
+</ul>
+<p><code>http模块</code>，创建web服务器</p>
+<ul>
+<li>http.createServer()    </li>
+<li>res.end()        返回请求内容</li>
+<li>res.setHeader        解决返回内容中文乱码</li>
+</ul>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><ul>
+<li>内置模块<ul>
+<li>fs</li>
+<li>path</li>
+<li>http</li>
+<li>etc…</li>
+</ul>
+</li>
+<li>自定义模块<ul>
+<li>用户直接创建的.js文件</li>
+</ul>
+</li>
+<li>第三方模块<ul>
+<li>第三方开发模块，需要下载</li>
+</ul>
+</li>
+</ul>
+<h3 id="模块作用域"><a href="#模块作用域" class="headerlink" title="模块作用域"></a>模块作用域</h3><blockquote>
+<p>类似于函数作用域，在自定义模块中定义的变量，方法等成员，只能在当前模块内被访问</p>
+</blockquote>
+<p>作用：防止全局变量污染的问题</p>
+<ul>
+<li>module对象 （向外共享模块作用域中的成员）</li>
+</ul>
+<p>在每一个.js自定义模块中都有一个module对象，存储了和当前模块有关的信息</p>
+<ul>
+<li>module.exports()对象</li>
+</ul>
+<p>在自定义模块中，使用该对象，将模块内的成员共享出去，供外界使用</p>
+<h2 id="npm与包"><a href="#npm与包" class="headerlink" title="npm与包"></a>npm与包</h2><p>包：第三方模块</p>
+<ul>
+<li>node_modules文件夹存放所有已安装到项目中的包</li>
+<li>package-lock.json 配置文件记录node_modules目录下的每一个包的下载信息</li>
+</ul>
+<blockquote>
+<p>npm i    一次性安装所有的依赖包</p>
+<p>npm uninstall    卸载指定的包</p>
+<p>npm i 包名 -D    记录到devDependencie节点</p>
+</blockquote>
+<h2 id="模块加载机制"><a href="#模块加载机制" class="headerlink" title="模块加载机制"></a>模块加载机制</h2><h1 id="express"><a href="#express" class="headerlink" title="express"></a>express</h1><blockquote>
+<p>基于Node.js的web开发框架</p>
+</blockquote>
+<ul>
+<li><p>启动web服务器</p>
+<pre><code>  const express = require(&#39;express&#39;)
+  
+  const app = express()
+  
+  app.listen(80, () =&gt; &#123;
+    console.log(&#39;server is runing at http://127.0.0.1&#39;);
+  &#125;)
+</code></pre>
+</li>
+<li><p>监听客户端<code>GET</code>请求和<code>POST</code>请求</p>
+<pre><code>  app.get(&#39;/&#39;, (req, res) =&gt; &#123;
+    res.send(&#39;404&#39;)        //res.send 响应一个文本字符串
+  &#125;)
+  
+  app.post(&#39;/&#39;, (req, res) =&gt; &#123;
+    res.send(&#39;404&#39;)
+  &#125;)
+</code></pre>
+</li>
+</ul>
+<h2 id="获取URL中携带的查询参数"><a href="#获取URL中携带的查询参数" class="headerlink" title="获取URL中携带的查询参数"></a>获取URL中携带的查询参数</h2><ul>
+<li><p>通过<code>req.query</code>对象，可以访问到客户端通过查询字符串的形式，发送到服务器的参数</p>
+</li>
+<li><p>通过<code>req.params</code>对象，可以访问到URL中，通过：匹配到的==动态参数==</p>
+<p>获取URL中的动态参数</p>
+</li>
+</ul>
+<h2 id="托管静态资源"><a href="#托管静态资源" class="headerlink" title="托管静态资源"></a>托管静态资源</h2><ul>
+<li><p><code>express.static()</code>，可以创建一个静态资源服务器</p>
+<p>将public目录下的图片，CSS文件，JS文件对外开放访问</p>
+<pre><code>app.use(express.static(&#39;public&#39;))
+</code></pre>
+</li>
+<li><p>挂载路径前缀</p>
+<pre><code>    app.use(&#39;/public&#39;, express.static(&#39;public&#39;))
+  
+ 通过带有/public前缀地址来访问public目录中的文件
+</code></pre>
+</li>
+</ul>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><blockquote>
+<p>广义上来讲，路由就是映射关系</p>
+<p><code>express</code>中，路由指==客户端请求==与==服务端处理函数==之间的映射关系</p>
+</blockquote>
+<ul>
+<li><p>组成：请求的类型，请求的URL地址，处理函数</p>
+</li>
+<li><p>格式：        </p>
+<pre><code>    app.METHOD(PATH, function)
+</code></pre>
+</li>
+</ul>
+<h3 id="模块化路由"><a href="#模块化路由" class="headerlink" title="模块化路由"></a>模块化路由</h3><p>express不建议将路由直接挂载到app上，而是推荐将路由抽离为单独的模块</p>
+<p>步骤：</p>
+<ol>
+<li>调用express.Router()函数创建路由对象</li>
+<li>向路由对象上挂载具体的路由</li>
+<li>使用module.exports 向外共享路由对象</li>
+<li>使用app.use()函数注册路由模块</li>
+</ol>
+<blockquote>
+<p><code>app.use()</code>函数的作用，就是来注册全局中间件</p>
+</blockquote>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><blockquote>
+<p>对请求进行预处理</p>
+</blockquote>
+<p>==注意：==中间件函数的形参列表中，必须包含next参数；而路由处理函数只包含req和res</p>
+<ul>
+<li><p>next函数作用</p>
+<p>实现多个中间件连续调用的关键，它表示把流转关系转交给下一个中间件或路由</p>
+</li>
+<li><p>全局生效的中间件 （客户端发起的任何请求，到达服务器后，都会触发的中间件）</p>
+<p>通过调用 app.use(中间件函数)，即可定义一个全局生效的中间件</p>
+</li>
+<li><p>不使用 app.use() 定义的中间件，叫局部生效的中间件，只在当前路由中生效</p>
+</li>
+</ul>
+<p><code>注意事项</code></p>
+<ol>
+<li>要在路由之前注册中间件</li>
+<li>客户端发送过来的请求，可以连续调用多个中间件进行处理</li>
+<li>不要忘记调用next() 函数</li>
+<li>next() 后面不要再写额外的代码</li>
+<li>连续调用多个中间件时，多个中间件之间，共享req和res对象</li>
+</ol>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li>接口的跨域问题</li>
+</ul>
+<p>解决方法：</p>
+<ol>
+<li>CORS（主流方案，推荐）</li>
+<li>JSONP（有缺陷的方案，只支持GET请求）</li>
+</ol>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js"><span class="toc-number">1.</span> <span class="toc-text">Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97"><span class="toc-number">1.1.</span> <span class="toc-text">系统模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">模块作用域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm%E4%B8%8E%E5%8C%85"><span class="toc-number">1.3.</span> <span class="toc-text">npm与包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.</span> <span class="toc-text">模块加载机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#express"><span class="toc-number">2.</span> <span class="toc-text">express</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96URL%E4%B8%AD%E6%90%BA%E5%B8%A6%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">获取URL中携带的查询参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%98%E7%AE%A1%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-number">2.2.</span> <span class="toc-text">托管静态资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1"><span class="toc-number">2.3.</span> <span class="toc-text">路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1"><span class="toc-number">2.3.1.</span> <span class="toc-text">模块化路由</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">2.4.</span> <span class="toc-text">中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.5.</span> <span class="toc-text">接口</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/13/Nodejs/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/13/Nodejs/&text=Nodejs"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/13/Nodejs/&is_video=false&description=Nodejs"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Nodejs&body=Check out this article: http://example.com/2022/04/13/Nodejs/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/13/Nodejs/&title=Nodejs"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/13/Nodejs/&name=Nodejs&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/13/Nodejs/&t=Nodejs"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022
+    zzy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/tags/">标签</a></li><!--
+    --><!--
+      --><li><a href="/categories/">分类</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv" class="fa fa-eye">
+              访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none' class="fa fa-user">
+                  访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'SITENAME';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>

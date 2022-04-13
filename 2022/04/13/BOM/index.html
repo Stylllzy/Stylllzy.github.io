@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="BOM &amp;&amp; PC端网页特效BOM Browser Object Model （浏览器模板对象）  提供独立于内容与浏览器窗口进行交互的对象，核心对象是&#x3D;&#x3D;window&#x3D;&#x3D; BOM比DOM更大，包含DOM   window对象的常见事件窗口加载事件 window.onload  当文档内容完全加载完成会触发事件 调整窗口大小事件 window.onresize  窗口大小发生像素变">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BOM">
+<meta property="og:url" content="http://example.com/2022/04/13/BOM/index.html">
+<meta property="og:site_name" content="zzy&#39;s web">
+<meta property="og:description" content="BOM &amp;&amp; PC端网页特效BOM Browser Object Model （浏览器模板对象）  提供独立于内容与浏览器窗口进行交互的对象，核心对象是&#x3D;&#x3D;window&#x3D;&#x3D; BOM比DOM更大，包含DOM   window对象的常见事件窗口加载事件 window.onload  当文档内容完全加载完成会触发事件 调整窗口大小事件 window.onresize  窗口大小发生像素变">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220109090154144.png">
+<meta property="og:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220109124721183.png">
+<meta property="og:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220109163504802.png">
+<meta property="article:published_time" content="2022-04-13T03:53:58.366Z">
+<meta property="article:modified_time" content="2022-04-13T04:26:32.385Z">
+<meta property="article:author" content="zzy">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220109090154144.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>BOM</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/04/13/DOM%E9%AB%98%E7%BA%A7/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/04/13/Ajax/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/13/BOM/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/13/BOM/&text=BOM"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/13/BOM/&is_video=false&description=BOM"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BOM&body=Check out this article: http://example.com/2022/04/13/BOM/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/13/BOM/&name=BOM&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/13/BOM/&t=BOM"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BOM-amp-amp-PC%E7%AB%AF%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88"><span class="toc-number">1.</span> <span class="toc-text">BOM &amp;&amp; PC端网页特效</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BOM"><span class="toc-number">1.1.</span> <span class="toc-text">BOM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#window%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">window对象的常见事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%8A%A0%E8%BD%BD%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">窗口加载事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E7%AA%97%E5%8F%A3%E5%A4%A7%E5%B0%8F%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">调整窗口大小事件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setTimeout"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">setTimeout()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#setInterval"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">setInterval()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">JS执行机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#location-%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.4.</span> <span class="toc-text">location 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#navigator-%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.5.</span> <span class="toc-text">navigator 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#history-%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.6.</span> <span class="toc-text">history 对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PC"><span class="toc-number">1.2.</span> <span class="toc-text">PC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E5%81%8F%E7%A7%BB%E9%87%8Foffset"><span class="toc-number">1.2.1.</span> <span class="toc-text">元素偏移量offset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0scroll"><span class="toc-number">1.2.2.</span> <span class="toc-text">元素scroll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mouseenter-%E5%92%8C-mouseover-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.3.</span> <span class="toc-text">mouseenter 和 mouseover 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85"><span class="toc-number">1.2.4.</span> <span class="toc-text">动画函数封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.5.</span> <span class="toc-text">立即执行函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E6%B5%81%E9%98%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">节流阀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E5%8A%A8%E7%94%BB%E7%9A%84%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">带有动画的返回顶部</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        BOM
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">zzy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-04-13T03:53:58.366Z" itemprop="datePublished">2022-04-13</time>
+        
+        (Updated: <time datetime="2022-04-13T04:26:32.385Z" itemprop="dateModified">2022-04-13</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="BOM-amp-amp-PC端网页特效"><a href="#BOM-amp-amp-PC端网页特效" class="headerlink" title="BOM &amp;&amp; PC端网页特效"></a>BOM &amp;&amp; PC端网页特效</h1><h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><blockquote>
+<p>Browser Object Model （浏览器模板对象）</p>
+</blockquote>
+<p>提供独立于内容与浏览器窗口进行交互的对象，核心对象是==window==</p>
+<p>BOM比DOM更大，包含DOM</p>
+<img src="C:\Users\11842\AppData\Roaming\Typora\typora-user-images\image-20220109090154144.png" alt="image-20220109090154144" style="zoom: 67%;" />
+
+<h3 id="window对象的常见事件"><a href="#window对象的常见事件" class="headerlink" title="window对象的常见事件"></a>window对象的常见事件</h3><h4 id="窗口加载事件"><a href="#窗口加载事件" class="headerlink" title="窗口加载事件"></a>窗口加载事件</h4><blockquote>
+<p>window.onload</p>
+</blockquote>
+<p>当文档内容完全加载完成会触发事件</p>
+<h4 id="调整窗口大小事件"><a href="#调整窗口大小事件" class="headerlink" title="调整窗口大小事件"></a>调整窗口大小事件</h4><blockquote>
+<p>window.onresize</p>
+</blockquote>
+<p>窗口大小发生像素变化，触发该事件</p>
+<h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><h4 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout()"></a>setTimeout()</h4><blockquote>
+<p>window.setTimeout(调用函数，[延迟的毫秒数]);</p>
+</blockquote>
+<p>==回调函数==,需要等待时间，时间到了再调用</p>
+<ul>
+<li><p>停止setTimeout()计时器</p>
+<p>window.clearTimeout(timeout ID) //取消先前通过调用setTimeout()建立的计时器</p>
+</li>
+</ul>
+<h4 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval()"></a>setInterval()</h4><blockquote>
+<p>window.setInterval(回调函数，[间隔的毫秒数]);</p>
+</blockquote>
+<p>重复调用一个函数，每隔这个时间，就去调用一次回调函数</p>
+<ul>
+<li><p>停止setInterval()计时器</p>
+<p>clearInterval();</p>
+</li>
+</ul>
+<h3 id="JS执行机制"><a href="#JS执行机制" class="headerlink" title="JS执行机制"></a>JS执行机制</h3><blockquote>
+<p>同步和异步</p>
+</blockquote>
+<p>先执行同步任务，再执行异步任务（回调函数）</p>
+<h3 id="location-对象"><a href="#location-对象" class="headerlink" title="location 对象"></a>location 对象</h3><p>获取URL等信息</p>
+<h3 id="navigator-对象"><a href="#navigator-对象" class="headerlink" title="navigator 对象"></a>navigator 对象</h3><p>包含有关浏览器的信息，最常用的是==userAgent==属性，该属性可以返回由客户机发送服务器的user-agent头部的值</p>
+<h3 id="history-对象"><a href="#history-对象" class="headerlink" title="history 对象"></a>history 对象</h3><p>与浏览器历史记录进行交互，该对象包含用户访问过的URL</p>
+<ul>
+<li>back()        后退</li>
+<li>forward()   前进</li>
+<li>go(参数)    前进后退功能  参数为1，前进1个页面，参数为-1，后退1个页面</li>
+</ul>
+<h2 id="PC"><a href="#PC" class="headerlink" title="PC"></a>PC</h2><h3 id="元素偏移量offset"><a href="#元素偏移量offset" class="headerlink" title="元素偏移量offset"></a>元素偏移量offset</h3><p>动态得到该元素的位置（偏移），大小等</p>
+<p><img src="C:\Users\11842\AppData\Roaming\Typora\typora-user-images\image-20220109124721183.png" alt="image-20220109124721183"></p>
+<blockquote>
+<p>offset 与 style 区别</p>
+</blockquote>
+<ul>
+<li>获取元素大小位置，用offset</li>
+<li>更改元素的值，用style</li>
+</ul>
+<h3 id="元素scroll"><a href="#元素scroll" class="headerlink" title="元素scroll"></a>元素scroll</h3><p>动态得到该元素的大小，滚动距离</p>
+<p><img src="C:\Users\11842\AppData\Roaming\Typora\typora-user-images\image-20220109163504802.png" alt="image-20220109163504802"></p>
+<blockquote>
+<p>==注意==：</p>
+</blockquote>
+<ul>
+<li>offset系列用于获得元素位置    offsetLeft    offsetTop</li>
+<li>client用于获取元素大小     clientWidth   clientHeight</li>
+<li>scroll用于获取滚动距离      scrollTop     scrollLeft</li>
+</ul>
+<blockquote>
+<p>注意页面滚动的距离通过  ==window.pageXOffset== 获得 （这是 <code>scrollX 的别名</code>）</p>
+</blockquote>
+<h3 id="mouseenter-和-mouseover-的区别"><a href="#mouseenter-和-mouseover-的区别" class="headerlink" title="mouseenter 和 mouseover 的区别"></a>mouseenter 和 mouseover 的区别</h3><p>mouseover 鼠标经过自身盒子会触发，经过子盒子还会触发；</p>
+<p>mouseenter 只会经过自身盒子触发（mouseenter 不会冒泡）</p>
+<h3 id="动画函数封装"><a href="#动画函数封装" class="headerlink" title="动画函数封装"></a>动画函数封装</h3><blockquote>
+<p>实现核心原理</p>
+</blockquote>
+<p>==通过定时器setInterval() 不断移动盒子位置==</p>
+<h3 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h3><p>(function() {})()    或者    (function(){}());</p>
+<p>作用：独立创建了一个作用域 </p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="节流阀"><a href="#节流阀" class="headerlink" title="节流阀"></a>节流阀</h3><blockquote>
+<p>防止轮播图按钮连续点击造成播放过快</p>
+</blockquote>
+<p>核心思路：利用回调函数，添加一个变量来控制，锁住函数和解锁函数</p>
+<h3 id="带有动画的返回顶部"><a href="#带有动画的返回顶部" class="headerlink" title="带有动画的返回顶部"></a>带有动画的返回顶部</h3>
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BOM-amp-amp-PC%E7%AB%AF%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88"><span class="toc-number">1.</span> <span class="toc-text">BOM &amp;&amp; PC端网页特效</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BOM"><span class="toc-number">1.1.</span> <span class="toc-text">BOM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#window%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">window对象的常见事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%8A%A0%E8%BD%BD%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">窗口加载事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E7%AA%97%E5%8F%A3%E5%A4%A7%E5%B0%8F%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">调整窗口大小事件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setTimeout"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">setTimeout()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#setInterval"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">setInterval()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">JS执行机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#location-%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.4.</span> <span class="toc-text">location 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#navigator-%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.5.</span> <span class="toc-text">navigator 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#history-%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.6.</span> <span class="toc-text">history 对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PC"><span class="toc-number">1.2.</span> <span class="toc-text">PC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E5%81%8F%E7%A7%BB%E9%87%8Foffset"><span class="toc-number">1.2.1.</span> <span class="toc-text">元素偏移量offset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0scroll"><span class="toc-number">1.2.2.</span> <span class="toc-text">元素scroll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mouseenter-%E5%92%8C-mouseover-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.3.</span> <span class="toc-text">mouseenter 和 mouseover 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85"><span class="toc-number">1.2.4.</span> <span class="toc-text">动画函数封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.5.</span> <span class="toc-text">立即执行函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E6%B5%81%E9%98%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">节流阀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E5%8A%A8%E7%94%BB%E7%9A%84%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">带有动画的返回顶部</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/13/BOM/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/13/BOM/&text=BOM"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/13/BOM/&is_video=false&description=BOM"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BOM&body=Check out this article: http://example.com/2022/04/13/BOM/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/13/BOM/&title=BOM"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/13/BOM/&name=BOM&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/13/BOM/&t=BOM"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022
+    zzy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/tags/">标签</a></li><!--
+    --><!--
+      --><li><a href="/categories/">分类</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv" class="fa fa-eye">
+              访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none' class="fa fa-user">
+                  访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'SITENAME';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="ES6新增let声明的变量只在所处于的块级有效（var声明的变量不具备块级作用域特性）  for循环的计数器，适合使用let   let不存在变量提升，之前的var会发生变量提升，即变量可以在声明之前使用，值为undefined  let不允许重复声明  暂时性死区   const声明一个只读的常量，一旦声明，常量的值就不能改变  声明时必须赋值  作用域与let相同，只在声明所在的块级作用域内有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6">
+<meta property="og:url" content="http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/index.html">
+<meta property="og:site_name" content="zzy&#39;s web">
+<meta property="og:description" content="ES6新增let声明的变量只在所处于的块级有效（var声明的变量不具备块级作用域特性）  for循环的计数器，适合使用let   let不存在变量提升，之前的var会发生变量提升，即变量可以在声明之前使用，值为undefined  let不允许重复声明  暂时性死区   const声明一个只读的常量，一旦声明，常量的值就不能改变  声明时必须赋值  作用域与let相同，只在声明所在的块级作用域内有">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220117171422237.png">
+<meta property="og:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220116202057869.png">
+<meta property="og:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220116202427818.png">
+<meta property="og:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220117100136098.png">
+<meta property="article:published_time" content="2022-04-13T03:53:50.926Z">
+<meta property="article:modified_time" content="2022-04-13T04:27:25.138Z">
+<meta property="article:author" content="zzy">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/11842/AppData/Roaming/Typora/typora-user-images/image-20220117171422237.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>ES6</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/search/">Search</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/04/13/Ajax/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/04/13/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8+%E8%AE%A4%E8%AF%81/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&text=ES6"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&is_video=false&description=ES6"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6&body=Check out this article: http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&name=ES6&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&t=ES6"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6"><span class="toc-number">1.</span> <span class="toc-text">ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E"><span class="toc-number">1.1.</span> <span class="toc-text">新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#let"><span class="toc-number">1.1.1.</span> <span class="toc-text">let</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const"><span class="toc-number">1.1.2.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Symbol"><span class="toc-number">1.1.3.</span> <span class="toc-text">Symbol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set"><span class="toc-number">1.1.4.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map"><span class="toc-number">1.1.5.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.1.6.</span> <span class="toc-text">循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%EF%BC%88module%EF%BC%89"><span class="toc-number">1.1.7.</span> <span class="toc-text">模块（module）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise"><span class="toc-number">1.1.8.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generator-%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.9.</span> <span class="toc-text">Generator 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES7-Async-Await"><span class="toc-number">1.1.10.</span> <span class="toc-text">ES7 Async Await</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">1.1.11.</span> <span class="toc-text">解构赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.12.</span> <span class="toc-text">箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E6%8B%93%E5%B1%95"><span class="toc-number">1.1.13.</span> <span class="toc-text">内置对象拓展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%93%E5%B1%95"><span class="toc-number">1.1.13.1.</span> <span class="toc-text">字符串拓展</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.14.</span> <span class="toc-text">数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">面向对象编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class%E7%B1%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">class类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.2.2.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.3.</span> <span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.</span> <span class="toc-text">ES6中的类和对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-number">1.4.</span> <span class="toc-text">类的继承</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES5"><span class="toc-number">2.</span> <span class="toc-text">ES5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">构造函数和原型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype"><span class="toc-number">2.1.1.</span> <span class="toc-text">构造函数原型 prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%9E%8B-%E2%80%93proto%E2%80%93"><span class="toc-number">2.1.2.</span> <span class="toc-text">对象原型 –proto–</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E3%80%81%E5%AE%9E%E4%BE%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.1.3.</span> <span class="toc-text">构造函数、实例、原型对象三者之间的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">2.1.4.</span> <span class="toc-text">原型链</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">2.2.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES5%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">ES5新增方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">2.3.1.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.3.2.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.3.</span> <span class="toc-text">对象方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6"><span class="toc-number">3.</span> <span class="toc-text">函数进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%B0%83%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">函数的定义和调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this"><span class="toc-number">3.2.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">严格模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">高阶函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">3.5.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92"><span class="toc-number">3.6.</span> <span class="toc-text">递归</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">正则表达式</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        ES6
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">zzy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-04-13T03:53:50.926Z" itemprop="datePublished">2022-04-13</time>
+        
+        (Updated: <time datetime="2022-04-13T04:27:25.138Z" itemprop="dateModified">2022-04-13</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h2 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h2><h3 id="let"><a href="#let" class="headerlink" title="let"></a><code>let</code></h3><p>声明的变量只在所处于的<code>块级</code>有效（var声明的变量不具备块级作用域特性）</p>
+<blockquote>
+<p>for循环的计数器，适合使用<code>let</code></p>
+</blockquote>
+<ul>
+<li><p><strong>let</strong>不存在变量提升，之前的<strong>var</strong>会发生变量提升，即变量可以在声明之前使用，值为undefined</p>
+</li>
+<li><p>let不允许重复声明</p>
+</li>
+<li><p>暂时性死区</p>
+</li>
+</ul>
+<h3 id="const"><a href="#const" class="headerlink" title="const"></a><code>const</code></h3><p>声明一个只读的常量，一旦声明，常量的值就不能改变</p>
+<ul>
+<li><p>声明时必须赋值</p>
+</li>
+<li><p>作用域与let相同，只在声明所在的块级作用域内有效</p>
+</li>
+</ul>
+<blockquote>
+<p>ES6有六种声明变量的方法</p>
+<p>var，function，let，const，import，class</p>
+</blockquote>
+<img src="C:\Users\11842\AppData\Roaming\Typora\typora-user-images\image-20220117171422237.png" alt="image-20220117171422237" style="zoom: 67%;" />
+
+<h3 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a><code>Symbol</code></h3><p>数据类型，作用是声明一个独一无二的值</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a><code>Set</code></h3><p>类似数组，成员唯一</p>
+<p>语法：</p>
+<pre><code>set.add/delete/has(成员) &amp; set.clear()
+</code></pre>
+<p>场景：数组去重</p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a><code>Map</code></h3><p>类似对象，但是键不限于字符串（传统方式对象的键一定是字符串）</p>
+<p>语法：</p>
+<pre><code>map.set(键,值) &amp; map.get/delete/has (键) &amp; map.clear()
+</code></pre>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a><code>循环</code></h3><p>起初：for</p>
+<p>ES5：forEach（仅支持数组），for…in（推荐遍历对象）</p>
+<p>ES6：for…of（可以遍历数组，字符串，映射，集合等数据结构）</p>
+<pre><code>var arr = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]
+for (var val of arr) &#123;
+    console.log(&#39;值：&#39; + val)
+&#125;
+</code></pre>
+<h3 id="模块（module）"><a href="#模块（module）" class="headerlink" title="模块（module）"></a><code>模块（module）</code></h3><p>通过 import 和 export 实现导入导出功能 （必须走HTTP协议访问）</p>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a><code>Promise</code></h3><p>异步编程的解决方案，比传统的解决方案——回调函数和事件——更合理强大</p>
+<p>语法上，Promise 是一个对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    <span class="title function_">resolve</span>(value); <span class="comment">//接收网络请求，跳转then</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">reject</span>(error);  /</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//代码处理</span></span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//捕获错误</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Generator-函数"><a href="#Generator-函数" class="headerlink" title="Generator 函数"></a><code>Generator 函数</code></h3><p>Generator 函数是一个状态机，封装了多个内部状态。</p>
+<p>执行 Generator 函数会返回一个遍历器对象，</p>
+<p>特征：</p>
+<ul>
+<li><code>function</code>关键字与函数名之间有一个星号；</li>
+<li>函数体内部使用<code>yield</code>表达式，定义不同的内部状态（<code>yield</code>在英语里的意思就是“产出”）。<code>yield</code>表达式就是暂停标志。</li>
+</ul>
+<blockquote>
+<p>调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象，也就是上一章介绍的遍历器对象（Iterator Object）</p>
+</blockquote>
+<p>调用遍历器对象的<code>next</code>方法，使得指针移向下一个状态</p>
+<h3 id="ES7-Async-Await"><a href="#ES7-Async-Await" class="headerlink" title="ES7 Async Await"></a><code>ES7 Async Await</code></h3><p>async：Generator 函数的语法糖</p>
+<ul>
+<li><p><code>async</code>函数就是将 Generator 函数的星号（<code>*</code>）替换成<code>async</code>，将<code>yield</code>替换成<code>await</code>，仅此而已</p>
+</li>
+<li><p><code>async</code>表示函数里有异步操作，<code>await</code>表示紧跟在后面的表达式需要等待结果。</p>
+</li>
+<li><p><code>async</code>函数的<code>await</code>命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。</p>
+</li>
+<li><p><code>async</code>函数的返回值是 Promise 对象，可以用<code>then</code>方法指定下一步的操作。</p>
+</li>
+<li><p><code>async</code>函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而<code>await</code>命令就是内部<code>then</code>命令的语法糖。</p>
+</li>
+</ul>
+<h3 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h3><p>ES6允许从数组中提取值，按照对应位置对变量赋值。对象也可以实现解构</p>
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">() =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>若函数体中只有一句代码，并且代码的执行结果就是函数的返回值，函数体大括号可以省略</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">sum</span> = (<span class="params">n1,n2</span>) =&gt; n1 + n2;</span><br></pre></td></tr></table></figure></li>
+<li><p>若形参只有一个，可省略小括号</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = v =&gt; v;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>使用场景:</p>
+<p>当一个函数作为参数传入另一个函数时,例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;,)</span><br></pre></td></tr></table></figure>
+
+<p>ES6 引入 rest函数获取多余参数，替换 arguments对象</p>
+<p>箭头函数中的this，指向的是函数定义位置的上下文this</p>
+<h3 id="内置对象拓展"><a href="#内置对象拓展" class="headerlink" title="内置对象拓展"></a>内置对象拓展</h3><p>见ES6文档</p>
+<h4 id="字符串拓展"><a href="#字符串拓展" class="headerlink" title="字符串拓展"></a>字符串拓展</h4><p><code>repeat</code>函数：平铺指定次数，如：‘x’.repeat(3)</p>
+<p><code>模板字符串</code>:</p>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
+<li>Set</li>
+</ul>
+<p>类似于数组，但是成员的值都是唯一的，没有重复的值</p>
+<p>本身是一个构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="title class_">Set</span>();</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><h3 id="class类"><a href="#class类" class="headerlink" title="class类"></a>class类</h3><blockquote>
+<p>JS 中的成员只有公有的，私有的两种形式，不能之间通过public，private关键字修饰</p>
+</blockquote>
+<ul>
+<li>this 声明属性：共有的</li>
+<li>var 声明属性： 私有的</li>
+</ul>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>比如我想要用代码描述一个场景，有一只叫做xiaoA的猫，吃了一个苹果，又吃了一条鱼，然后有一只叫做xiaoB的猫，吃了一根香蕉</p>
+<pre><code>// 面向过程
+function xiaoAEatApple() &#123;&#125;
+function xiaoAEatFish() &#123;&#125;
+function xiaoBEatBanana() &#123;&#125;
+xiaoAEatApple();
+xiaoAEatFish();
+xiaoBEatBanana();
+
+// 面向对象
+function Cat(name) &#123;
+    this.name = name
+&#125;
+Cat.prototype.eat = function(something) &#123;&#125;
+let xiaoA = new Cat(&#39;xiaoA&#39;)
+let xiaoB = new Cat(&#39;xiaoB&#39;)
+xiaoA.eat(&#39;apple&#39;)
+xiaoA.eat(&#39;fish&#39;)
+xiaoB.eat(&#39;banana&#39;)
+</code></pre>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>面向对象注重于抽象事务，而面向过程注重于叙述事务</li>
+<li>面向对象逻辑清晰有条理，而面向过程比较方面</li>
+<li>JS通过函数和原型，模拟了传统面向对象编程中类的概念实现了面向对象的编程模式</li>
+<li>面向对象的编程思想，主要为了实现3件事，封装，继承和多态</li>
+</ul>
+<blockquote>
+<p>优点</p>
+</blockquote>
+<p>易维护，易复用，易拓展，由于封装，继承，多态，可以设计出低耦合的系统，使系统更加灵活，易于维护。</p>
+<blockquote>
+<p>缺点</p>
+</blockquote>
+<p>性能低于面向过程</p>
+<h2 id="ES6中的类和对象"><a href="#ES6中的类和对象" class="headerlink" title="ES6中的类和对象"></a>ES6中的类和对象</h2><blockquote>
+<p>类必须使用new实例化对象</p>
+</blockquote>
+<p>类里面有个constructor 函数，接受传递过来的参数，同时返回实例对象</p>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>extends</p>
+<blockquote>
+<p>在声明函数的时候，会自动创建一个prototype属性，我们管他叫做原型, 一般用来存放实例公用的方法</p>
+</blockquote>
+<p>super关键字</p>
+<blockquote>
+<p>访问和调用对象父类上的函数，可以调用父类的构造函数，也可以调用父类的普通函数</p>
+</blockquote>
+<p>==super 必须在子类this 之前调用==</p>
+<blockquote>
+<p>注意</p>
+</blockquote>
+<ul>
+<li>在ES6中类没有变量提升，所以必须先定义类，才能通过类实例化对象</li>
+<li>类里面的共有的属性和方法一定要加 this 使用</li>
+</ul>
+<p>以前：createElement创建元素，innerHTML赋值，再appendChild追加到父元素里</p>
+<p>==现在：==利用==insertAdjacentHTML()==直接把字符串格式元素添加到父元素里</p>
+<h1 id="ES5"><a href="#ES5" class="headerlink" title="ES5"></a>ES5</h1><h2 id="构造函数和原型"><a href="#构造函数和原型" class="headerlink" title="构造函数和原型"></a>构造函数和原型</h2><ul>
+<li><p>实例成员</p>
+<p>构造函数内部通过 this 添加的成员    uname    age    sing</p>
+<p>只能通过实例化的对象来访问</p>
+</li>
+<li><p>静态成员</p>
+<p>在构造函数本身上添加的成员</p>
+<p>只能通过构造函数来访问</p>
+</li>
+</ul>
+<blockquote>
+<p>构造函数存在==浪费内存==的问题</p>
+</blockquote>
+<h3 id="构造函数原型-prototype"><a href="#构造函数原型-prototype" class="headerlink" title="构造函数原型 prototype"></a>构造函数原型 prototype</h3><blockquote>
+<p>构造函数通过原型分配的函数是所有对象所共享的</p>
+</blockquote>
+<p><strong>prototype:</strong><br>是子类继承的父类的属性，也就是当调用子类构造函数时，总的来说，这里只能是继承一个具体的对象，不能是一个类（ES6后会有所改变）</p>
+<h3 id="对象原型-–proto–"><a href="#对象原型-–proto–" class="headerlink" title="对象原型 –proto–"></a>对象原型 –proto–</h3><p>对象都会有一个属性–proto– 指向构造函数的prototype原型对象</p>
+<ul>
+<li>– proto– 对象原型和原型对象prototype是等价的</li>
+</ul>
+<h3 id="构造函数、实例、原型对象三者之间的关系"><a href="#构造函数、实例、原型对象三者之间的关系" class="headerlink" title="构造函数、实例、原型对象三者之间的关系"></a>构造函数、实例、原型对象三者之间的关系</h3><img src="C:\Users\11842\AppData\Roaming\Typora\typora-user-images\image-20220116202057869.png" alt="image-20220116202057869" style="zoom: 50%;" />
+
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p><img src="C:\Users\11842\AppData\Roaming\Typora\typora-user-images\image-20220116202427818.png" alt="image-20220116202427818"></p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>ES6之前没用extends，可以通过构造函数和原型对象模拟继承，被称为组合继承</p>
+<ul>
+<li><p>call()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function.call(thisArg, arg1, arg2, ...)</span><br></pre></td></tr></table></figure>
+
+<p>修改函数运行时的this 指向</p>
+<p><strong>thisArg</strong>    当前调用函数this的指向对象</p>
+<p><strong>arg1, arg2, …</strong>    传递的其他参数</p>
+</li>
+<li><p>父构造函数继承属性</p>
+</li>
+<li><p>原型对象继承方法</p>
+</li>
+</ul>
+<h2 id="ES5新增方法"><a href="#ES5新增方法" class="headerlink" title="ES5新增方法"></a>ES5新增方法</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
+<li>==遍历==</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(callback(currentValue [, index [, array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<p>​        参数        </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">callback</span><br></pre></td></tr></table></figure>
+
+<p>为数组中每个元素执行的函数，该函数接收一至三个参数：</p>
+<ul>
+<li><p><code>currentValue</code></p>
+<p>数组中正在处理的当前元素。</p>
+</li>
+<li><p><code>index</code> 可选</p>
+<p>数组中正在处理的当前元素的索引。</p>
+</li>
+<li><p><code>array</code> 可选</p>
+<p><code>forEach()</code> 方法正在操作的数组。</p>
+</li>
+<li><p><code>thisArg</code> 可选</p>
+</li>
+</ul>
+<p>​        可选参数。当执行回调函数 <code>callback</code> 时，用作 <code>this</code> 的值。</p>
+<ul>
+<li><p>==筛选==</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">callback</span><br></pre></td></tr></table></figure>
+
+<p>用来测试数组的每个元素的函数。返回 <code>true</code> 表示该元素通过测试，保留该元素，<code>false</code> 则不保留。它接受以下三个参数：</p>
+<ul>
+<li><p><code>element</code></p>
+<p>数组中当前正在处理的元素。</p>
+</li>
+<li><p><code>index</code>可选</p>
+<p>正在处理的元素在数组中的索引。</p>
+</li>
+<li><p><code>array</code>可选</p>
+<p>调用了 <code>filter</code> 的数组本身。</p>
+</li>
+</ul>
+<p><code>thisArg</code>可选</p>
+<p>执行 <code>callback</code> 时，用于 <code>this</code> 的值。</p>
+</li>
+</ul>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><ul>
+<li><p>从一个字符串的两端删除空白字符</p>
+<p>str.trim()</p>
+</li>
+</ul>
+<h3 id="对象方法"><a href="#对象方法" class="headerlink" title="对象方法"></a>对象方法</h3><ul>
+<li><p>定义对象中新属性或修改原有的属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj</span><br></pre></td></tr></table></figure>
+
+<p>要定义属性的对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prop</span><br></pre></td></tr></table></figure>
+
+<p>要定义或修改的属性的名称或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">descriptor</span><br></pre></td></tr></table></figure>
+
+<p>要定义或修改的属性描述符。</p>
+</li>
+</ul>
+<h1 id="函数进阶"><a href="#函数进阶" class="headerlink" title="函数进阶"></a>函数进阶</h1><h2 id="函数的定义和调用"><a href="#函数的定义和调用" class="headerlink" title="函数的定义和调用"></a>函数的定义和调用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="title class_">Function</span>(‘参数<span class="number">1</span>’,’参数<span class="number">2</span>’,’函数体’);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函数也属于对象</p>
+</blockquote>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><blockquote>
+<p>改变函数内部this指向，常用的有bind(),call(),apply() </p>
+</blockquote>
+<ul>
+<li>apply</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong>call()方法的作用和 apply() 方法类似，区别就是<code>call()</code>方法接受的是<strong>参数列表</strong>，而<code>apply()</code>方法接受的是<strong>一个参数数组</strong>。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func.<span class="title function_">apply</span>(thisArg, [argsArray])</span><br><span class="line">- thisArg</span><br><span class="line">必选的。在 func 函数运行时使用的 <span class="variable language_">this</span> 值。请注意，<span class="variable language_">this</span>可能不是该方法看到的实际值：如果这个函数处于非严格模式下，则指定为 <span class="literal">null</span> 或 <span class="literal">undefined</span> 时会自动替换为指向全局对象，原始值会被包装。</span><br><span class="line">- argsArray</span><br><span class="line">可选的。一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 func 函数。如果该参数的值为 <span class="literal">null</span> 或  <span class="literal">undefined</span>，则表示不需要传入任何参数。从<span class="title class_">ECMAScript</span> <span class="number">5</span> 开始可以使用类数组对象。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>bind</li>
+</ul>
+<blockquote>
+<p><code>bind()</code> 方法创建一个新的函数，在 <code>bind()</code> 被调用时，这个新函数的 <code>this</code> 被指定为 <code>bind()</code> 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function.bind(thisArg[, arg1[, arg2[, ...]]])</span><br><span class="line">- thisArg</span><br><span class="line">调用绑定函数时作为 this 参数传递给目标函数的值。 如果使用new运算符构造绑定函数，则忽略该值。当使用 bind 在 setTimeout 中创建一个函数（作为回调提供）时，作为 thisArg 传递的任何原始值都将转换为 object。如果 bind 函数的参数列表为空，或者thisArg是null或undefined，执行作用域的 this 将被视为新函数的 thisArg。</span><br><span class="line">- arg1, arg2, ...</span><br><span class="line">当目标函数被调用时，被预置入绑定函数的参数列表中的参数。</span><br><span class="line">返回值</span><br><span class="line">返回一个 原函数的拷贝，并拥有指定的 this 值和初始参数。</span><br></pre></td></tr></table></figure>
+
+<img src="C:\Users\11842\AppData\Roaming\Typora\typora-user-images\image-20220117100136098.png" alt="image-20220117100136098" style="zoom:67%;" />
+
+
+
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><ul>
+<li><p>脚本</p>
+<ul>
+<li>‘use    strict’</li>
+</ul>
+</li>
+<li><p>函数</p>
+<p>严格模式下全局作用域中函数中的this是    undefined</p>
+</li>
+</ul>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>对其他函数进行操作的函数，它接收函数作为参数或将函数作为返回值输出</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>指有权访问另一个函数作用域中局部变量的<code>函数</code></p>
+<p>被访问的变量所在函数就是闭包函数</p>
+<ul>
+<li>作用：延伸了变量的作用范围</li>
+</ul>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><ul>
+<li>浅拷贝</li>
+</ul>
+<p>浅拷贝只拷贝一层，更深层次对象级别的只拷贝引用（地址）</p>
+<p> <code>ES6新增方法可以浅拷贝</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(target, ...sources)</span><br><span class="line">参数</span><br><span class="line">	target	目标对象。</span><br><span class="line">	sources	源对象。</span><br><span class="line">返回值</span><br><span class="line">	目标对象。</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>深拷贝</li>
+</ul>
+<p>拷贝多层，每一级别的数据都会拷贝</p>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><blockquote>
+<p>用于匹配字符串中字符组合的模式，在JS中，正则表达式也是对象</p>
+</blockquote>
+<ul>
+<li>创建</li>
+</ul>
+<ol>
+<li>利用RegExp对象来创建正则表达式</li>
+<li>利用字面量创建正则表达式</li>
+</ol>
+<ul>
+<li>测试</li>
+</ul>
+<p>test() 正则对象方法，用于检测字符串是否符合该规则，该对象会返回true或false，其参数是测试字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">regexObj.test(str)</span><br><span class="line">参数</span><br><span class="line">	str	用来与正则表达式匹配的字符串</span><br><span class="line">返回值</span><br><span class="line">	如果正则表达式与指定的字符串匹配 ，返回true；否则false。</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>用于表单验证</p>
+</blockquote>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+         
+          <li><a href="/tags/">标签</a></li>
+         
+          <li><a href="/categories/">分类</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6"><span class="toc-number">1.</span> <span class="toc-text">ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E"><span class="toc-number">1.1.</span> <span class="toc-text">新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#let"><span class="toc-number">1.1.1.</span> <span class="toc-text">let</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const"><span class="toc-number">1.1.2.</span> <span class="toc-text">const</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Symbol"><span class="toc-number">1.1.3.</span> <span class="toc-text">Symbol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set"><span class="toc-number">1.1.4.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map"><span class="toc-number">1.1.5.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.1.6.</span> <span class="toc-text">循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%EF%BC%88module%EF%BC%89"><span class="toc-number">1.1.7.</span> <span class="toc-text">模块（module）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise"><span class="toc-number">1.1.8.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generator-%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.9.</span> <span class="toc-text">Generator 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES7-Async-Await"><span class="toc-number">1.1.10.</span> <span class="toc-text">ES7 Async Await</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">1.1.11.</span> <span class="toc-text">解构赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.12.</span> <span class="toc-text">箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E6%8B%93%E5%B1%95"><span class="toc-number">1.1.13.</span> <span class="toc-text">内置对象拓展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%93%E5%B1%95"><span class="toc-number">1.1.13.1.</span> <span class="toc-text">字符串拓展</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.14.</span> <span class="toc-text">数据结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">面向对象编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class%E7%B1%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">class类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.2.2.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.3.</span> <span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.</span> <span class="toc-text">ES6中的类和对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-number">1.4.</span> <span class="toc-text">类的继承</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES5"><span class="toc-number">2.</span> <span class="toc-text">ES5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">构造函数和原型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B-prototype"><span class="toc-number">2.1.1.</span> <span class="toc-text">构造函数原型 prototype</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%9E%8B-%E2%80%93proto%E2%80%93"><span class="toc-number">2.1.2.</span> <span class="toc-text">对象原型 –proto–</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E3%80%81%E5%AE%9E%E4%BE%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E4%B8%89%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.1.3.</span> <span class="toc-text">构造函数、实例、原型对象三者之间的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">2.1.4.</span> <span class="toc-text">原型链</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">2.2.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES5%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">ES5新增方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">2.3.1.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.3.2.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.3.</span> <span class="toc-text">对象方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6"><span class="toc-number">3.</span> <span class="toc-text">函数进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%B0%83%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">函数的定义和调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this"><span class="toc-number">3.2.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">严格模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">高阶函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">3.5.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92"><span class="toc-number">3.6.</span> <span class="toc-text">递归</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">正则表达式</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&text=ES6"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&is_video=false&description=ES6"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ES6&body=Check out this article: http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&title=ES6"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&name=ES6&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/13/js%E9%AB%98%E7%BA%A7es6/&t=ES6"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022
+    zzy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+      --><li><a href="/">Home</a></li><!--
+    --><!--
+      --><li><a href="/search/">Search</a></li><!--
+    --><!--
+      --><li><a href="/tags/">标签</a></li><!--
+    --><!--
+      --><li><a href="/categories/">分类</a></li><!--
+    --><!--
+      --><li><a href="/archives/">Writing</a></li><!--
+    --><!--
+      --><li><a href="/about/">About</a></li><!--
+    --><!--
+      --><li><a target="_blank" rel="noopener" href="https://github.com/Stylllzy">GitHub</a></li><!--
+    -->
+      </ul>
+      <ul>
+        
+          <!-- 不蒜子统计 -->
+          <span id="busuanzi_container_site_pv" class="fa fa-eye">
+              访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          <span class="post-meta-divider">|</span>
+          <span id="busuanzi_container_site_uv" style='display:none' class="fa fa-user">
+                  访客数<span id="busuanzi_value_site_uv"></span>人
+          </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </ul>
+    </nav>
+  </div>
+  
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'SITENAME';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
