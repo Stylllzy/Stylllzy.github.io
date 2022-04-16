@@ -69,10 +69,6 @@
      --><!--
        --><li><a href="/search/">Search</a></li><!--
      --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     --><!--
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
        --><li><a href="/about/">About</a></li><!--
@@ -184,9 +180,9 @@
 </blockquote>
 <ul>
 <li><p>定义：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mutations</span>: &#123;</span><br><span class="line">	<span class="title function_">increment</span>(<span class="params">state</span>) &#123;</span><br><span class="line">		state.<span class="property">count</span>++</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<div class="highlight-wrap" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mutations</span>: &#123;</span><br><span class="line">	<span class="title function_">increment</span>(<span class="params">state</span>) &#123;</span><br><span class="line">		state.<span class="property">count</span>++</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
 <li><p>更新：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">increment: function() &#123;</span><br><span class="line">	this.$store.commit(&#x27;increment&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">increment: function() &#123;</span><br><span class="line">	this.$store.commit(&#x27;increment&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
 <li><p>Mutation传递参数</p>
 <p>在通过mutation更新数据的时候, 有可能我们希望携带一些额外的参数<br>参数被称为是mutation的载荷(Payload);</p>
 <p>当有多个参数时，payload是一个对象</p>
@@ -194,7 +190,7 @@
 <li><p>提交风格</p>
 <p>普通：commit</p>
 <p>type：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.$store.commit(&#123;</span><br><span class="line">	type:&#x27;changeCount&#x27;,</span><br><span class="line">	count:100</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.$store.commit(&#123;</span><br><span class="line">	type:&#x27;changeCount&#x27;,</span><br><span class="line">	count:100</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div></li>
 <li><p>响应规则</p>
 <ul>
 <li>提前在store中初始化好所需的属性</li>
@@ -213,7 +209,7 @@
 <li><p>Action</p>
 <p>代替Mutation进行异步操作</p>
 <p>context是和store对象具有相同方法和属性的对象</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">	increment(context) &#123;</span><br><span class="line">		context.commit(&#x27;increment&#x27;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">actions: &#123;</span><br><span class="line">	increment(context) &#123;</span><br><span class="line">		context.commit(&#x27;increment&#x27;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <p>在Vue组件中使用dispatch</p>
 <p><strong>Action返回的Promise</strong></p>
@@ -254,10 +250,6 @@
           <li><a href="/">Home</a></li>
          
           <li><a href="/search/">Search</a></li>
-         
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
          
           <li><a href="/archives/">Writing</a></li>
          
@@ -315,10 +307,6 @@
       --><li><a href="/">Home</a></li><!--
     --><!--
       --><li><a href="/search/">Search</a></li><!--
-    --><!--
-      --><li><a href="/tags/">标签</a></li><!--
-    --><!--
-      --><li><a href="/categories/">分类</a></li><!--
     --><!--
       --><li><a href="/archives/">Writing</a></li><!--
     --><!--

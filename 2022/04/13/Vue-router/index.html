@@ -65,10 +65,6 @@
      --><!--
        --><li><a href="/search/">Search</a></li><!--
      --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     --><!--
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
        --><li><a href="/about/">About</a></li><!--
@@ -167,13 +163,13 @@
 <p>3.单页面富应用阶段(SPA):</p>
 <p>​    主要特点:在前后端分离的基础上加了一层前端路由</p>
 <p>​    前端路由:管理URL与静态资源服务器中对应组件的映射关系</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link&gt;:该标签会被渲染成一个 &lt;a&gt;标签</span><br><span class="line">&lt;router-view&gt;:该标签会根据当前的路径,动态渲染出不同的组件</span><br><span class="line">网页其他内容,比如顶部的标题/导航,或者底部的版权信息等会和&lt;router-view&gt;处于同一个等级</span><br><span class="line">路由切换时,切换的是&lt;router-view&gt;挂载的组件,其他内容不变</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link&gt;:该标签会被渲染成一个 &lt;a&gt;标签</span><br><span class="line">&lt;router-view&gt;:该标签会根据当前的路径,动态渲染出不同的组件</span><br><span class="line">网页其他内容,比如顶部的标题/导航,或者底部的版权信息等会和&lt;router-view&gt;处于同一个等级</span><br><span class="line">路由切换时,切换的是&lt;router-view&gt;挂载的组件,其他内容不变</span><br></pre></td></tr></table></figure></div>
 
 <h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><p>主要作用:将路由对应的组件打包成一个个的js代码块,只有这个路由被访问到,才加载对应的组件</p>
 <h2 id="route-和-router的区别"><a href="#route-和-router的区别" class="headerlink" title="$route 和 $router的区别"></a>$route 和 $router的区别</h2><p>$router 为 VueRouter 实例，导航到不同URL，使用router.push</p>
 <p>$route 为当前router跳转对象里面可以获取 name,path,query,params等</p>
 <h2 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h2><p>动态改变网页标题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach((to,from,next) =&gt; &#123;</span><br><span class="line">  // 从from 跳转到 to</span><br><span class="line">  document.title = to.matched[0].meta.title</span><br><span class="line">  console.log(to)</span><br><span class="line">  // 执行下一步</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach((to,from,next) =&gt; &#123;</span><br><span class="line">  // 从from 跳转到 to</span><br><span class="line">  document.title = to.matched[0].meta.title</span><br><span class="line">  console.log(to)</span><br><span class="line">  // 执行下一步</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
 
 <blockquote>
 <p>补充:    如果是后置钩子（afterEach），不需要主动调用next()函数</p>
@@ -207,10 +203,6 @@
           <li><a href="/">Home</a></li>
          
           <li><a href="/search/">Search</a></li>
-         
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
          
           <li><a href="/archives/">Writing</a></li>
          
@@ -268,10 +260,6 @@
       --><li><a href="/">Home</a></li><!--
     --><!--
       --><li><a href="/search/">Search</a></li><!--
-    --><!--
-      --><li><a href="/tags/">标签</a></li><!--
-    --><!--
-      --><li><a href="/categories/">分类</a></li><!--
     --><!--
       --><li><a href="/archives/">Writing</a></li><!--
     --><!--

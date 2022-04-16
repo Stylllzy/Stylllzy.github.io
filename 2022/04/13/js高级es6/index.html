@@ -70,10 +70,6 @@
      --><!--
        --><li><a href="/search/">Search</a></li><!--
      --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     --><!--
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
        --><li><a href="/about/">About</a></li><!--
@@ -209,7 +205,7 @@ for (var val of arr) &#123;
 <h3 id="模块（module）"><a href="#模块（module）" class="headerlink" title="模块（module）"></a><code>模块（module）</code></h3><p>通过 import 和 export 实现导入导出功能 （必须走HTTP协议访问）</p>
 <h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a><code>Promise</code></h3><p>异步编程的解决方案，比传统的解决方案——回调函数和事件——更合理强大</p>
 <p>语法上，Promise 是一个对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    <span class="title function_">resolve</span>(value); <span class="comment">//接收网络请求，跳转then</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">reject</span>(error);  /</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//代码处理</span></span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//捕获错误</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    <span class="title function_">resolve</span>(value); <span class="comment">//接收网络请求，跳转then</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">reject</span>(error);  /</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//代码处理</span></span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//捕获错误</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="Generator-函数"><a href="#Generator-函数" class="headerlink" title="Generator 函数"></a><code>Generator 函数</code></h3><p>Generator 函数是一个状态机，封装了多个内部状态。</p>
 <p>执行 Generator 函数会返回一个遍历器对象，</p>
@@ -236,17 +232,17 @@ for (var val of arr) &#123;
 </li>
 </ul>
 <h3 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h3><p>ES6允许从数组中提取值，按照对应位置对变量赋值。对象也可以实现解构</p>
-<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">() =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><div class="highlight-wrap" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">() =&gt; &#123;&#125;</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li><p>若函数体中只有一句代码，并且代码的执行结果就是函数的返回值，函数体大括号可以省略</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">sum</span> = (<span class="params">n1,n2</span>) =&gt; n1 + n2;</span><br></pre></td></tr></table></figure></li>
+<div class="highlight-wrap" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">sum</span> = (<span class="params">n1,n2</span>) =&gt; n1 + n2;</span><br></pre></td></tr></table></figure></div></li>
 <li><p>若形参只有一个，可省略小括号</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = v =&gt; v;</span><br></pre></td></tr></table></figure></li>
+  <div class="highlight-wrap" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = v =&gt; v;</span><br></pre></td></tr></table></figure></div></li>
 </ul>
 <p>使用场景:</p>
 <p>当一个函数作为参数传入另一个函数时,例如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;,)</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;,)</span><br></pre></td></tr></table></figure></div>
 
 <p>ES6 引入 rest函数获取多余参数，替换 arguments对象</p>
 <p>箭头函数中的this，指向的是函数定义位置的上下文this</p>
@@ -258,7 +254,7 @@ for (var val of arr) &#123;
 </ul>
 <p>类似于数组，但是成员的值都是唯一的，没有重复的值</p>
 <p>本身是一个构造函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="title class_">Set</span>();</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="title class_">Set</span>();</span><br></pre></td></tr></table></figure></div>
 
 
 
@@ -352,7 +348,7 @@ xiaoB.eat(&#39;banana&#39;)
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>ES6之前没用extends，可以通过构造函数和原型对象模拟继承，被称为组合继承</p>
 <ul>
 <li><p>call()</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function.call(thisArg, arg1, arg2, ...)</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function.call(thisArg, arg1, arg2, ...)</span><br></pre></td></tr></table></figure></div>
 
 <p>修改函数运行时的this 指向</p>
 <p><strong>thisArg</strong>    当前调用函数this的指向对象</p>
@@ -366,10 +362,10 @@ xiaoB.eat(&#39;banana&#39;)
 <h2 id="ES5新增方法"><a href="#ES5新增方法" class="headerlink" title="ES5新增方法"></a>ES5新增方法</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
 <li>==遍历==</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(callback(currentValue [, index [, array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(callback(currentValue [, index [, array]])[, thisArg])</span><br></pre></td></tr></table></figure></div>
 
 <p>​        参数        </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">callback</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">callback</span><br></pre></td></tr></table></figure></div>
 
 <p>为数组中每个元素执行的函数，该函数接收一至三个参数：</p>
 <ul>
@@ -388,10 +384,10 @@ xiaoB.eat(&#39;banana&#39;)
 <p>​        可选参数。当执行回调函数 <code>callback</code> 时，用作 <code>this</code> 的值。</p>
 <ul>
 <li><p>==筛选==</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])</span><br></pre></td></tr></table></figure></div>
 
 <p>参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">callback</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">callback</span><br></pre></td></tr></table></figure></div>
 
 <p>用来测试数组的每个元素的函数。返回 <code>true</code> 表示该元素通过测试，保留该元素，<code>false</code> 则不保留。它接受以下三个参数：</p>
 <ul>
@@ -416,21 +412,21 @@ xiaoB.eat(&#39;banana&#39;)
 </ul>
 <h3 id="对象方法"><a href="#对象方法" class="headerlink" title="对象方法"></a>对象方法</h3><ul>
 <li><p>定义对象中新属性或修改原有的属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure></div>
 
 <p>参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj</span><br></pre></td></tr></table></figure></div>
 
 <p>要定义属性的对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prop</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prop</span><br></pre></td></tr></table></figure></div>
 
 <p>要定义或修改的属性的名称或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a> 。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">descriptor</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">descriptor</span><br></pre></td></tr></table></figure></div>
 
 <p>要定义或修改的属性描述符。</p>
 </li>
 </ul>
-<h1 id="函数进阶"><a href="#函数进阶" class="headerlink" title="函数进阶"></a>函数进阶</h1><h2 id="函数的定义和调用"><a href="#函数的定义和调用" class="headerlink" title="函数的定义和调用"></a>函数的定义和调用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="title class_">Function</span>(‘参数<span class="number">1</span>’,’参数<span class="number">2</span>’,’函数体’);</span><br></pre></td></tr></table></figure>
+<h1 id="函数进阶"><a href="#函数进阶" class="headerlink" title="函数进阶"></a>函数进阶</h1><h2 id="函数的定义和调用"><a href="#函数的定义和调用" class="headerlink" title="函数的定义和调用"></a>函数的定义和调用</h2><div class="highlight-wrap" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="title class_">Function</span>(‘参数<span class="number">1</span>’,’参数<span class="number">2</span>’,’函数体’);</span><br></pre></td></tr></table></figure></div>
 
 <blockquote>
 <p>函数也属于对象</p>
@@ -444,7 +440,7 @@ xiaoB.eat(&#39;banana&#39;)
 <blockquote>
 <p><strong>注意：</strong>call()方法的作用和 apply() 方法类似，区别就是<code>call()</code>方法接受的是<strong>参数列表</strong>，而<code>apply()</code>方法接受的是<strong>一个参数数组</strong>。</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func.<span class="title function_">apply</span>(thisArg, [argsArray])</span><br><span class="line">- thisArg</span><br><span class="line">必选的。在 func 函数运行时使用的 <span class="variable language_">this</span> 值。请注意，<span class="variable language_">this</span>可能不是该方法看到的实际值：如果这个函数处于非严格模式下，则指定为 <span class="literal">null</span> 或 <span class="literal">undefined</span> 时会自动替换为指向全局对象，原始值会被包装。</span><br><span class="line">- argsArray</span><br><span class="line">可选的。一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 func 函数。如果该参数的值为 <span class="literal">null</span> 或  <span class="literal">undefined</span>，则表示不需要传入任何参数。从<span class="title class_">ECMAScript</span> <span class="number">5</span> 开始可以使用类数组对象。</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func.<span class="title function_">apply</span>(thisArg, [argsArray])</span><br><span class="line">- thisArg</span><br><span class="line">必选的。在 func 函数运行时使用的 <span class="variable language_">this</span> 值。请注意，<span class="variable language_">this</span>可能不是该方法看到的实际值：如果这个函数处于非严格模式下，则指定为 <span class="literal">null</span> 或 <span class="literal">undefined</span> 时会自动替换为指向全局对象，原始值会被包装。</span><br><span class="line">- argsArray</span><br><span class="line">可选的。一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 func 函数。如果该参数的值为 <span class="literal">null</span> 或  <span class="literal">undefined</span>，则表示不需要传入任何参数。从<span class="title class_">ECMAScript</span> <span class="number">5</span> 开始可以使用类数组对象。</span><br></pre></td></tr></table></figure></div>
 
 <ul>
 <li>bind</li>
@@ -452,7 +448,7 @@ xiaoB.eat(&#39;banana&#39;)
 <blockquote>
 <p><code>bind()</code> 方法创建一个新的函数，在 <code>bind()</code> 被调用时，这个新函数的 <code>this</code> 被指定为 <code>bind()</code> 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function.bind(thisArg[, arg1[, arg2[, ...]]])</span><br><span class="line">- thisArg</span><br><span class="line">调用绑定函数时作为 this 参数传递给目标函数的值。 如果使用new运算符构造绑定函数，则忽略该值。当使用 bind 在 setTimeout 中创建一个函数（作为回调提供）时，作为 thisArg 传递的任何原始值都将转换为 object。如果 bind 函数的参数列表为空，或者thisArg是null或undefined，执行作用域的 this 将被视为新函数的 thisArg。</span><br><span class="line">- arg1, arg2, ...</span><br><span class="line">当目标函数被调用时，被预置入绑定函数的参数列表中的参数。</span><br><span class="line">返回值</span><br><span class="line">返回一个 原函数的拷贝，并拥有指定的 this 值和初始参数。</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function.bind(thisArg[, arg1[, arg2[, ...]]])</span><br><span class="line">- thisArg</span><br><span class="line">调用绑定函数时作为 this 参数传递给目标函数的值。 如果使用new运算符构造绑定函数，则忽略该值。当使用 bind 在 setTimeout 中创建一个函数（作为回调提供）时，作为 thisArg 传递的任何原始值都将转换为 object。如果 bind 函数的参数列表为空，或者thisArg是null或undefined，执行作用域的 this 将被视为新函数的 thisArg。</span><br><span class="line">- arg1, arg2, ...</span><br><span class="line">当目标函数被调用时，被预置入绑定函数的参数列表中的参数。</span><br><span class="line">返回值</span><br><span class="line">返回一个 原函数的拷贝，并拥有指定的 this 值和初始参数。</span><br></pre></td></tr></table></figure></div>
 
 <img src="C:\Users\11842\AppData\Roaming\Typora\typora-user-images\image-20220117100136098.png" alt="image-20220117100136098" style="zoom:67%;" />
 
@@ -479,7 +475,7 @@ xiaoB.eat(&#39;banana&#39;)
 </ul>
 <p>浅拷贝只拷贝一层，更深层次对象级别的只拷贝引用（地址）</p>
 <p> <code>ES6新增方法可以浅拷贝</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(target, ...sources)</span><br><span class="line">参数</span><br><span class="line">	target	目标对象。</span><br><span class="line">	sources	源对象。</span><br><span class="line">返回值</span><br><span class="line">	目标对象。</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(target, ...sources)</span><br><span class="line">参数</span><br><span class="line">	target	目标对象。</span><br><span class="line">	sources	源对象。</span><br><span class="line">返回值</span><br><span class="line">	目标对象。</span><br></pre></td></tr></table></figure></div>
 
 
 
@@ -501,7 +497,7 @@ xiaoB.eat(&#39;banana&#39;)
 <li>测试</li>
 </ul>
 <p>test() 正则对象方法，用于检测字符串是否符合该规则，该对象会返回true或false，其参数是测试字符串。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">regexObj.test(str)</span><br><span class="line">参数</span><br><span class="line">	str	用来与正则表达式匹配的字符串</span><br><span class="line">返回值</span><br><span class="line">	如果正则表达式与指定的字符串匹配 ，返回true；否则false。</span><br></pre></td></tr></table></figure>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">regexObj.test(str)</span><br><span class="line">参数</span><br><span class="line">	str	用来与正则表达式匹配的字符串</span><br><span class="line">返回值</span><br><span class="line">	如果正则表达式与指定的字符串匹配 ，返回true；否则false。</span><br></pre></td></tr></table></figure></div>
 
 <blockquote>
 <p>用于表单验证</p>
@@ -528,10 +524,6 @@ xiaoB.eat(&#39;banana&#39;)
           <li><a href="/">Home</a></li>
          
           <li><a href="/search/">Search</a></li>
-         
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
          
           <li><a href="/archives/">Writing</a></li>
          
@@ -589,10 +581,6 @@ xiaoB.eat(&#39;banana&#39;)
       --><li><a href="/">Home</a></li><!--
     --><!--
       --><li><a href="/search/">Search</a></li><!--
-    --><!--
-      --><li><a href="/tags/">标签</a></li><!--
-    --><!--
-      --><li><a href="/categories/">分类</a></li><!--
     --><!--
       --><li><a href="/archives/">Writing</a></li><!--
     --><!--

@@ -14,7 +14,7 @@
 <meta property="og:description" content="Vue编程范式：声明式编程 原生js：命令式编程 创建Vue实例对象传入 options：{}  {} 包含 el属性： string    |    HTMLElement 该属性决定 Vue 对象挂载到哪一个DOM元素  {} 包含 data 属性：（组件当中 data 必须是一个函数） Object    |    Function 存储数据（直接定义 或 从服务器加载）  {} 包含 me">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-13T03:54:09.493Z">
-<meta property="article:modified_time" content="2022-04-13T04:28:10.703Z">
+<meta property="article:modified_time" content="2022-04-16T07:07:56.532Z">
 <meta property="article:author" content="zzy">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
@@ -64,10 +64,6 @@
        --><li><a href="/">Home</a></li><!--
      --><!--
        --><li><a href="/search/">Search</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
      --><!--
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
@@ -138,7 +134,7 @@
       
         <time datetime="2022-04-13T03:54:09.493Z" itemprop="datePublished">2022-04-13</time>
         
-        (Updated: <time datetime="2022-04-13T04:28:10.703Z" itemprop="dateModified">2022-04-13</time>)
+        (Updated: <time datetime="2022-04-16T07:07:56.532Z" itemprop="dateModified">2022-04-16</time>)
         
       
     </div>
@@ -198,25 +194,17 @@
 </ul>
 </li>
 </ul>
-<h2 id="Vue-生命周期"><a href="#Vue-生命周期" class="headerlink" title="Vue 生命周期"></a>Vue 生命周期</h2><p>过程:    template -&gt; ast(抽象语法树) -&gt;render(渲染函数) -&gt; 虚拟DOM -&gt; UI(真实DOM)</p>
+<h2 id="Vue-生命周期"><a href="#Vue-生命周期" class="headerlink" title="Vue 生命周期"></a>Vue 生命周期</h2><p>过程:template -&gt; ast(抽象语法树) -&gt;render(渲染函数) -&gt; 虚拟DOM -&gt; UI(真实DOM)</p>
 <p><code>生命周期钩子</code>函数</p>
 <p>比如 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#created"><code>created</code></a> 钩子可以用来在一个实例被创建之后执行代码：</p>
-<pre><code>new Vue(&#123;
-    data: &#123;
-        a: 1
-    &#125;,
-    created: function () &#123;
-        // `this` 指向 vm 实例
-        console.log(&#39;a is: &#39; + this.a)
-    &#125;
-&#125;)
-// =&gt; &quot;a is: 1&quot;
-</code></pre>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: 1</span><br><span class="line">  &#125;,</span><br><span class="line">  created: function () &#123;</span><br><span class="line">    // `this` 指向 vm 实例</span><br><span class="line">    console.log(&#x27;a is: &#x27; + this.a)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+<p>  // =&gt; “a is: 1”</p>
 <p>也有一些其它的钩子，在实例生命周期的不同阶段被调用，如 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#mounted"><code>mounted</code></a>、<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#updated"><code>updated</code></a> 和 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#destroyed"><code>destroyed</code></a>。生命周期钩子的 <code>this</code> 上下文指向调用它的 Vue 实例</p>
 <p>不要在选项 property 或回调上使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions">箭头函数</a>，比如 <code>created: () =&gt; console.log(this.a)</code> 或 <code>vm.$watch(&#39;a&#39;, newValue =&gt; this.myMethod())</code>。因为箭头函数并没有 <code>this</code>，<code>this</code> 会作为变量一直向上级词法作用域查找，直至找到为止，经常导致 <code>Uncaught TypeError: Cannot read property of undefined</code> 或 <code>Uncaught TypeError: this.myMethod is not a function</code> 之类的错误。</p>
 <h2 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h2><p>v-bind        ：</p>
 <p>v-on             @</p>
-<h3 id="v-on修饰符"><a href="#v-on修饰符" class="headerlink" title="v-on修饰符"></a>v-on修饰符</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--  停止冒泡--&gt;</span><br><span class="line">  &lt;button @click.stop=&quot;doThis&quot;&gt;&lt;/button&gt;</span><br><span class="line">&lt;!--  阻止默认行为--&gt;</span><br><span class="line">  &lt;button @click.prevent=&quot;doThis&quot;&gt;&lt;/button&gt;</span><br><span class="line">&lt;!--  阻止默认行为,没有表达式--&gt;</span><br><span class="line">  &lt;form @submit.prevent&gt;&lt;/form&gt;</span><br><span class="line">&lt;!--  串联修饰符--&gt;</span><br><span class="line">  &lt;button @click.stop.prevent=&quot;doThis&quot;&gt;&lt;/button&gt;</span><br><span class="line">&lt;!--  键修饰符,键别名--&gt;</span><br><span class="line">  &lt;input @keyup.enter=&quot;onEnter&quot;&gt;</span><br><span class="line">&lt;!--  键修饰符,键代码--&gt;</span><br><span class="line">  &lt;input @keyup.13=&quot;onEnter&quot;&gt;</span><br><span class="line">&lt;!--  点击回调只会触发一次--&gt;</span><br><span class="line">  &lt;button @click.once=&quot;doThis&quot;&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="v-on修饰符"><a href="#v-on修饰符" class="headerlink" title="v-on修饰符"></a>v-on修饰符</h3><div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--  停止冒泡--&gt;</span><br><span class="line">  &lt;button @click.stop=&quot;doThis&quot;&gt;&lt;/button&gt;</span><br><span class="line">&lt;!--  阻止默认行为--&gt;</span><br><span class="line">  &lt;button @click.prevent=&quot;doThis&quot;&gt;&lt;/button&gt;</span><br><span class="line">&lt;!--  阻止默认行为,没有表达式--&gt;</span><br><span class="line">  &lt;form @submit.prevent&gt;&lt;/form&gt;</span><br><span class="line">&lt;!--  串联修饰符--&gt;</span><br><span class="line">  &lt;button @click.stop.prevent=&quot;doThis&quot;&gt;&lt;/button&gt;</span><br><span class="line">&lt;!--  键修饰符,键别名--&gt;</span><br><span class="line">  &lt;input @keyup.enter=&quot;onEnter&quot;&gt;</span><br><span class="line">&lt;!--  键修饰符,键代码--&gt;</span><br><span class="line">  &lt;input @keyup.13=&quot;onEnter&quot;&gt;</span><br><span class="line">&lt;!--  点击回调只会触发一次--&gt;</span><br><span class="line">  &lt;button @click.once=&quot;doThis&quot;&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="v-if-和-v-show"><a href="#v-if-和-v-show" class="headerlink" title="v-if    和    v-show"></a>v-if    和    v-show</h3><p>v-if 为 false，DOM 里没有该元素；v-show 为 false，display:none</p>
 <blockquote>
@@ -233,39 +221,34 @@
 <li><p>数组中哪些方法是响应式的</p>
 <ul>
 <li><p>push方法</p>
-<pre><code>this.letters.push(&#39;aaa&#39;)
-</code></pre>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.letters.push(&#x27;aaa&#x27;)</span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>pop()：删除数组最后一个元素</p>
-<pre><code>this.letters.pop();
-</code></pre>
-</li>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.letters.pop();</span><br></pre></td></tr></table></figure></div></li>
 <li><p>shift()：删除数组第一个元素</p>
-<pre><code>this letters.shift();
-</code></pre>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this letters.shift();</span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>unshift()：在数组最前面添加元素</p>
-<pre><code>this.letters.unshift();
-</code></pre>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.letters.unshift();</span><br></pre></td></tr></table></figure></div>
 </li>
 <li><p>splice()：删除元素/插入元素/替换元素</p>
 <ul>
 <li><p>删除元素：第二个参数传入你要删除几个元素（如果没有传，就删除后面所有的元素）</p>
-<pre><code>this.letters.splice(1,3)
-</code></pre>
-</li>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.letters.splice(1,3)</span><br></pre></td></tr></table></figure></div>
+
+<ul>
 <li><p>替换元素：第二个参数，表示替换几个元素，后面是用于替换前面的元素</p>
-<pre><code>this.letters.splice(1,3,&#39;m&#39;,&#39;n&#39;,&#39;l&#39;)
-</code></pre>
-</li>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.letters.splice(1,3,&#x27;m&#x27;,&#x27;n&#x27;,&#x27;l&#x27;)</span><br></pre></td></tr></table></figure></div>
+
+<ul>
 <li><p>插入元素：第二个参数，传入0，并且后面跟上要插入的元素</p>
-<pre><code>this.letters.splice(1,0,&#39;x&#39;,&#39;y&#39;,&#39;z&#39;)    
-</code></pre>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.letters.splice(1,0,&#x27;x&#x27;,&#x27;y&#x27;,&#x27;z&#x27;)	</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+</li>
+</ul>
 </li>
 <li><p>set(要修改的对象，索引值，修改后的值)</p>
-<pre><code>Vue.set(this.letters,0,&#39;bbbb&#39;)
-</code></pre>
-</li>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(this.letters,0,&#x27;bbbb&#x27;)</span><br></pre></td></tr></table></figure></div></li>
 </ul>
 </li>
 </ul>
@@ -277,10 +260,10 @@
 <li><p>v-bind绑定一个value属性</p>
 </li>
 <li><p>v-on指令给当前元素绑定input事件</p>
-  <input type="text" v-model="message">
-  
+  <div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;message&quot;&gt;</span><br></pre></td></tr></table></figure></div>
 <p>  等同于</p>
-  <input type="text" v-bind:value="message" v-on:input="message = $event.target.value"></li>
+  <div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-bind:value=&quot;message&quot; v-on:input=&quot;message = $event.target.value&quot;&gt;</span><br></pre></td></tr></table></figure></div>
+</li>
 </ul>
 <h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><p>注册组件的基本步骤：</p>
 <ul>
@@ -339,10 +322,7 @@
 <p>类型需要设置为    module</p>
 <ul>
 <li><p>如果希望某个模块中所有信息都导入，使用 * 可以导入模块中所有的export变量</p>
-<pre><code>import * as &#39;别名&#39; from &#39;./index.js&#39;
-console.log(&#39;别名&#39;.name)
-</code></pre>
-</li>
+<div class="highlight-wrap" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import * as &#x27;别名&#x27; from &#x27;./index.js&#x27;</span><br><span class="line">console.log(&#x27;别名&#x27;.name)</span><br></pre></td></tr></table></figure></div></li>
 </ul>
 </li>
 </ul>
@@ -368,10 +348,6 @@ console.log(&#39;别名&#39;.name)
           <li><a href="/">Home</a></li>
          
           <li><a href="/search/">Search</a></li>
-         
-          <li><a href="/tags/">标签</a></li>
-         
-          <li><a href="/categories/">分类</a></li>
          
           <li><a href="/archives/">Writing</a></li>
          
@@ -429,10 +405,6 @@ console.log(&#39;别名&#39;.name)
       --><li><a href="/">Home</a></li><!--
     --><!--
       --><li><a href="/search/">Search</a></li><!--
-    --><!--
-      --><li><a href="/tags/">标签</a></li><!--
-    --><!--
-      --><li><a href="/categories/">分类</a></li><!--
     --><!--
       --><li><a href="/archives/">Writing</a></li><!--
     --><!--
