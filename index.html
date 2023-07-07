@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>zzy‘s site</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+  <meta name="description" content="95后青年，后端开发者，略懂前端, 学生，实习，缺乏社会的毒打">
+  <meta name="keywords" content="Java,Spring,个人博客，微信小程序，博客">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="static/favicon.svg">
+  <link rel="stylesheet" href="static/css/index.css">
+<!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.css">
+  <script type="text/javascript">
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，上古浏览器不支持呢~');
+    }
+  </script>
+</head>
+
+<body>
+<div id="body-wrap">
+  <nav class="not_index_bg" id="nav" style="background-image:url(https://api.ixiaowai.cn/api/api.php)">
+    <div id="page_site-info">
+      <div id="site-title">
+        <span class="blogtitle"></span>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+        <script>
+          let typed = new Typed(".blogtitle", {
+            strings: ['永远相信美好的事情即将发生', 'Always believe that good things are about to happen'],
+            startDelay: 300,    //开始延时
+            typeSpeed: 100,     //打字速度
+            loop: true,         //循环
+            backSpeed: 100,     //回退速度
+            showCursor: true    //显示光标
+          });
+        </script>
+      </div>
+    </div>
+  </nav>
+
+  <main id="content-outer">
+    <div class="layout_page" id="content-inner">
+      <div class="aside_content" id="aside_content">
+        <div class="card-widget card-info">
+          <div class="card-content">
+            <div class="card-info-avatar is-center">
+              <img class="avatar-img"
+                   src="static/picture/zzy2.png"
+                   alt="avatar">
+              <div class="author-info__name">zzy</div>
+              <div class="author-info__description">00后青年，前后端开发者</div>
+              <div>在校学生</div>
+            </div>
+            <div class="card-info-social-icons is-center">
+              <!--Github-->
+              <a class="social-icon" href="https://github.com/Stylllzy" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-widget card-announcement">
+          <div class="card-content">
+            <div class="item-headline">
+              <i class="fa fa-comment" aria-hidden="true"></i>
+              <span>Email</span>
+            </div>
+            <div id="email-gmail">Gmail：zzyisyyds@gmail.com</div>
+            <div id="email-qq">QQ：1184271384@qq.com</div>
+          </div>
+        </div>
+        <div class="card-widget card-announcement">
+          <div class="card-content">
+            <div class="item-headline">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>location</span>
+            </div>
+            <div id="address">湖南湘潭（家）、江苏淮安（校）</div>
+          </div>
+        </div>
+      </div>
+      <article id="page">
+        <div class="article-container">
+          <h2>About</h2>
+          <p>
+            本人本科就读于湘大学兴湘学院（普通三本），专业计算机科学与技术；<br>
+            硕士就读于淮阴工学院（普通二本），专业材料于化工，方向：大数据与数字化工；
+          </p>
+          <hr>
+
+          <h2>技能</h2>
+          <div class="skillbox">
+            <div class="skillbar">
+              <div class="skillbar-title"
+                   style="background: linear-gradient(to right, #FF0066 0%, #FF00CC 100%); width: 75%">
+                <span>Java</span>
+              </div>
+              <div class="skill-bar-percent">75%</div>
+            </div>
+            <div class="skillbar">
+              <div class="skillbar-title"
+                   style="background: linear-gradient(to right, #9900FF 0%, #CC66FF 100%); width: 40%">
+                <span>Vue</span>
+              </div>
+              <div class="skill-bar-percent">80%</div>
+            </div>
+            <div class="skillbar">
+              <div class="skillbar-title"
+                   style="background: linear-gradient(to right, #2196F3 0%, #42A5F5 100%); width: 60%">
+                <span>React</span>
+              </div>
+              <div class="skill-bar-percent">60%</div>
+            </div>
+            <div class="skillbar">
+              <div class="skillbar-title"
+                   style="background: linear-gradient(to right, #00BCD4 0%, #80DEEA 100%); width: 70%">
+                <span>Python</span>
+              </div>
+              <div class="skill-bar-percent">80%</div>
+            </div>
+            <div class="skillbar">
+              <div class="skillbar-title"
+                   style="background: linear-gradient(to right, #4CAF50 0%, #81C784 100%); width: 60%">
+                <span>MySQL</span>
+              </div>
+              <div class="skill-bar-percent">60%</div>
+            </div>
+            <div class="skillbar">
+              <div class="skillbar-title"
+                   style="background: linear-gradient(to right, #FFEB3B 0%, #FFF176 100%); width: 75%">
+                <span>数据结构与算法</span>
+              </div>
+              <div class="skill-bar-percent">50%</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <div id="footer-wrap">
+      <div class="copyright">&copy;2020 - 2023 BY zzy</div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
