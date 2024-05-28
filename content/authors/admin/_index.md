@@ -1,58 +1,58 @@
 ---
 # Display name
-title: 吳健雄
+title: 周洋
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+name_pronunciation: Zhou Yang
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Yang
+last_name: Zhou
 
 # Status emoji
 status:
-  icon: ☕️
+  icon: 🍀
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Director of Cloud Infrastructure
+role: 学生
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: GenCoin
-    url: https://www.example.com/
+  - name: 淮阴工学院
+    url: https://www.hyit.edu.cn/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: 'mailto:your-email@example.com'
+    url: '17573204410@163.com'
     label: E-mail Me
-  - icon: brands/x
-    url: https://twitter.com/GetResearchDev
-  - icon: brands/github
-    url: https://github.com/gcushen
-  - icon: brands/linkedin
-    url: https://www.linkedin.com/
-  - icon: brands/instagram
-    url: https://www.instagram.com/
 
-education:
-  - area: PhD Artificial Intelligence
-    institution: Stanford University
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - icon: brands/weixin
+    url: 'https://weixin.qq.com/' 
+
+  - icon: brands/github
+    url: https://github.com/Stylllzy
+
+
+教育经历:
+  - area: 硕士 (材料与化工)
+    institution: 淮阴工学院
+    date_start: 2022-09-01
+    date_end: 2025-06-30
     summary: |
-      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
+      论文题目：_Why LLMs are awesome_。导师为 [Joe Smith 教授](https://example.com)。在 5 次 IEEE 会议上提交论文，论文发表在 2 本 Springer 期刊上。
     button:
       text: 'Read Thesis'
       url: 'https://example.com'
-  - area: MEng Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+
+  - area: 本科 (计算机科学与技术)
+    institution: 湘潭大学兴湘学院
+    date_start: 2018-09-01
+    date_end: 2020-06-30
     summary: |
       GPA: 3.8/4.0
 
@@ -60,17 +60,7 @@ education:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      GPA: 3.4/4.0
-      
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - 
 work:
   - position: Director of Cloud Infrastructure
     company_name: GenCoin
