@@ -38,7 +38,7 @@ profiles:
     url: https://github.com/Stylllzy
 
 
-教育经历:
+education:
   - area: 硕士 (材料与化工)
     institution: 淮阴工学院
     date_start: 2022-09-01
